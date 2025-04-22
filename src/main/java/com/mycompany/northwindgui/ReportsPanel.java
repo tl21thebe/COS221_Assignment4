@@ -24,6 +24,7 @@ public class ReportsPanel extends JPanel {
 
     public ReportsPanel() {
         setLayout(new BorderLayout());
+        
 
         // Create dropdown to select report type
         JPanel controlPanel = new JPanel();
@@ -40,6 +41,7 @@ public class ReportsPanel extends JPanel {
         table = new JTable(tableModel);
         add(new JScrollPane(table), BorderLayout.CENTER);
     }
+    
 
     private void generateReport() {
         String selectedReport = (String) reportTypeDropdown.getSelectedItem();
