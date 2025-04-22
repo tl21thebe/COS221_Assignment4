@@ -12,14 +12,19 @@ import java.sql.SQLException;
  * @author leroy
  */
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mariadb://localhost:3307/u22496336_u23545527_northwind";
-    private static final String USER = "root";
-    private static final String PASSWORD = "KC@!12970thebe";
-
+    
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
-    
-    
+        String protocol = System.getenv("dvdrental_DB_PROTO");     
+        String host = System.getenv("dvdrental_DB_HOST");          
+        String port = System.getenv("dvdrental_DB_PORT");          
+        String dbName = System.getenv("dvdrental_DB_NAME");        
+        String username = System.getenv("dvdrental_DB_USERNAME");  
+        String password = System.getenv("dvdrental_DB_PASSWORD");
+        
 
+
+        String url = String.format("%s://%s:%s/%s", protocol, host, port, dbName);
+
+        return DriverManager.getConnection(url, username, password);
+    }
 }
