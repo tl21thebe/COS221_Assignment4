@@ -24,7 +24,6 @@ public class ReportsPanel extends JPanel {
 
     public ReportsPanel() {
         setLayout(new BorderLayout());
-        
 
         // Create dropdown to select report type
         JPanel controlPanel = new JPanel();
@@ -40,19 +39,15 @@ public class ReportsPanel extends JPanel {
         tableModel = new DefaultTableModel(new String[]{"Column 1", "Column 2", "Column 3"}, 0);
         table = new JTable(tableModel);
         add(new JScrollPane(table), BorderLayout.CENTER);
-        
     }
-    
 
-    private void generateReport() 
-    {
+    private void generateReport() {
         String selectedReport = (String) reportTypeDropdown.getSelectedItem();
         ReportDAO reportDAO = new ReportDAO();
         List<String[]> reportData = reportDAO.getReport(selectedReport);
 
         tableModel.setRowCount(0); // Clear previous data
-        for (String[] row : reportData) 
-        {
+        for (String[] row : reportData) {
             tableModel.addRow(row);
         }
     }
